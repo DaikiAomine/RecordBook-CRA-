@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const LoginPage = () => {
-    return(
-        <p>This is the login page</p>
-    );
+	useEffect(() => {
+		fetch('/api/hello');
+	}, []);
+
+	return(
+			<p>This is the login page</p>
+	);
 }
 
 export default LoginPage;
