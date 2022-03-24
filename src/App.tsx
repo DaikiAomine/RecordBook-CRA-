@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
-import logo from './logo.svg';
-
-import './App.css';
+import './App.scss';
 
 class App extends Component {
   state = {
@@ -25,7 +23,7 @@ class App extends Component {
     return body;
   };
   
-  handleSubmit = async e => {
+  handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     const response = await fetch('/api/world', {
       method: 'POST',
@@ -43,7 +41,7 @@ render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          {/* <img src={"./logo.svg"} className="App-logo" alt="logo" /> */}
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
