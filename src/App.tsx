@@ -1,13 +1,14 @@
 import React from 'react';
-import './App.scss';
+import { Provider } from 'react-redux';
+import store from './store/configureStore';
 
 import LoginPage from './pages/login/login';
 
 const App = () => {
   return (
-    <div>
+    <Provider store={store}>
       <LoginPage />
-    </div>
+    </Provider>
   );
 };
 
