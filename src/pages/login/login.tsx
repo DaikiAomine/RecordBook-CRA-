@@ -1,4 +1,4 @@
-import { Box, Grid, TextField, Typography } from '@mui/material';
+import { Box, Button, Grid, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from "react";
 
 const LoginPage = () => {
@@ -10,7 +10,7 @@ const LoginPage = () => {
 		fetch('/api/hello');
 	}, []);
 
-	const handleLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleUserName = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setUserName(event.target.value);
 	};
 
@@ -19,12 +19,18 @@ const LoginPage = () => {
 	};
 
 	const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-		if(event.target.value == '') {
+		if(event.target.value === '') {
 			setError(true);
 		} else {
 			setError(false)
 		}
 	}
+
+	const handleLogin = () => {
+		if(username === '') {
+			console.log("hello");
+		}
+	};
 
 	return(
 		<>
@@ -58,7 +64,7 @@ const LoginPage = () => {
 								helperText={error && "Incorrect entry."}
 								label="login"
 								value={username}
-								onChange={handleLogin}
+								onChange={handleUserName}
 								onBlur={handleBlur} />
 						</div>
 
@@ -73,8 +79,12 @@ const LoginPage = () => {
 								onChange={handlePassword}
 								onBlur={handleBlur} />
 						</div>
+
 					</Box>
 				</Grid>   
+					<Box mt={2}>
+						<Button variant="contained" onClick={handleLogin}>Contained</Button>
+					</Box>
 			</Grid> 
 		</>
 	);
